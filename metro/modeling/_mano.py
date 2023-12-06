@@ -16,13 +16,13 @@ import json
 import code
 from manopth.manolayer import ManoLayer
 import scipy.sparse
-import metro.modeling.data.config as cfg
+from .data import config as cfg # import metro.modeling.data.config as cfg
 
 class MANO(nn.Module):
     def __init__(self):
         super(MANO, self).__init__()
 
-        self.mano_dir = 'metro/modeling/data'
+        self.mano_dir = cfg.data_path  # 'metro/modeling/data'
         self.layer = self.get_layer()
         self.vertex_num = 778
         self.face = self.layer.th_faces.numpy()

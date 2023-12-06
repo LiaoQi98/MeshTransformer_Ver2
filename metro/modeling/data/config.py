@@ -6,16 +6,24 @@ Adapted from opensource project GraphCMR (https://github.com/nkolot/GraphCMR/) a
 
 """
 
-from os.path import join
-folder_path = 'metro/modeling/'
-JOINT_REGRESSOR_TRAIN_EXTRA = folder_path + 'data/J_regressor_extra.npy'
-JOINT_REGRESSOR_H36M_correct = folder_path + 'data/J_regressor_h36m_correct.npy'
-SMPL_FILE = folder_path + 'data/basicModel_neutral_lbs_10_207_0_v1.0.0.pkl'
-SMPL_Male = folder_path + 'data/basicModel_m_lbs_10_207_0_v1.0.0.pkl'
-SMPL_Female = folder_path + 'data/basicModel_f_lbs_10_207_0_v1.0.0.pkl'
-SMPL_sampling_matrix = folder_path + 'data/mesh_downsampling.npz'
-MANO_FILE = folder_path + 'data/MANO_RIGHT.pkl'
-MANO_sampling_matrix = folder_path + 'data/mano_downsampling.npz'
+import os.path as osp
+root_path = osp.dirname(osp.abspath(__file__))
+folder_path = osp.dirname(root_path)
+hpe_path = osp.dirname(osp.dirname(osp.dirname(folder_path)))
+data_path = osp.join(hpe_path,'data')
+
+JOINT_REGRESSOR_TRAIN_EXTRA = osp.join(data_path,'J_regressor_extra.npy')
+JOINT_REGRESSOR_H36M_correct = osp.join(data_path, 'J_regressor_h36m_correct.npy')
+SMPL_FILE = osp.join(data_path, 'basicModel_neutral_lbs_10_207_0_v1.0.0.pkl')
+SMPL_Male = osp.join(data_path, 'basicModel_m_lbs_10_207_0_v1.0.0.pkl')
+SMPL_Female = osp.join(data_path, 'basicModel_f_lbs_10_207_0_v1.0.0.pkl')
+SMPL_sampling_matrix = osp.join(data_path, 'mesh_downsampling.npz')
+MANO_FILE = osp.join(data_path, 'MANO_RIGHT.pkl')
+MANO_sampling_matrix = osp.join(data_path, 'mano_downsampling.npz')
+
+hrnet_yaml = osp.join(data_path,'hrnet','cls_hrnet_w64_sgd_lr5e-2_wd1e-4_bs32_x100.yaml')
+hrnet_checkpoint = osp.join(data_path,'hrnet','hrnetv2_w64_imagenet_pretrained.pth')
+
 
 JOINTS_IDX = [8, 5, 29, 30, 4, 7, 21, 19, 17, 16, 18, 20, 31, 32, 33, 34, 35, 36, 37, 24, 26, 25, 28, 27]
 
