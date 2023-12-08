@@ -145,6 +145,9 @@ class Mesh(object):
         self.num_downsampling = num_downsampling
 
     def downsample(self, x, n1=0, n2=None):
+        device = x.device
+        self._U = [u.to(device) for u in self._U]
+        self._D = [d.to(device) for d in self._D]
         """Downsample mesh."""
         if n2 is None:
             n2 = self.num_downsampling
@@ -162,6 +165,9 @@ class Mesh(object):
         return x
 
     def upsample(self, x, n1=1, n2=0):
+        device = x.device
+        self._U = [u.to(device) for u in self._U]
+        self._D = [d.to(device) for d in self._D]
         """Upsample mesh."""
         if x.ndimension() < 3:
             for i in reversed(range(n2, n1)):
